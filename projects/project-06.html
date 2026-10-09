@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paint Program | Hallie Tran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site"><div class="wrap">
+  <a class="brand" href="../index.html"><span>&#9789;</span>Hallie Tran</a>
+  <nav aria-label="Main"><a href="../index.html">Work</a><a href="../about.html">About</a></nav>
+</div></header>
+<main class="page"><div class="wrap">
+  <h1>Paint Program</h1>
+  <p class="meta">ART 101 &middot; p5.js interactive program</p>
+
+  <p><a href="https://editor.p5js.org/ha.ling.ling1/full/QZXUO6As_">Play the paint program</a></p>
+
+  <h2>The idea</h2>
+  <p>A paint program I built in p5.js with three custom brushes (a star stamp, a fairy light spray, and a zigzag line) and an eraser. Press 1, 2, or 3 to pick a brush, 4 for the eraser, then click and drag. Press X to clear the canvas.</p>
+
+  <h2>Process</h2>
+  <p>Each brush is its own function that takes values like size and spread, so I can reuse it and change how it looks without rewriting it. A <code>switch</code> statement picks whichever brush is selected. Here is the star brush:</p>
+  <pre><code>function htStarStamp(cx, cy, points, size) {
+  push();
+  translate(cx, cy);
+  noStroke();
+  fill(255, 200, 0, 200);
+
+  let innerSize = size * 0.5;
+
+  // goes around the circle and swaps between the big and small radius to get the points
+  beginShape();
+  for (let i = 0; i &lt; points * 2; i++) {
+    let angle = map(i, 0, points * 2, 0, TWO_PI);
+    let r = (i % 2 === 0) ? size : innerSize;
+    vertex(cos(angle) * r, sin(angle) * r);
+  }
+  endShape(CLOSE);
+  pop();
+}</code></pre>
+
+  <h2>What I learned</h2>
+  <p>I learned how functions and switch statements can make an interactive program easier to organize and reuse. Next time, I would add more controls for changing brush colors and sizes while the program is running.</p>
+
+  <p><a href="../index.html">Back to all work</a></p>
+</div></main>
+<footer class="site"><div class="wrap">
+  <p>&copy; Hallie Tran &middot; <a href="mailto:hallieha-lien.tran@sjsu.edu">hallieha-lien.tran@sjsu.edu</a></p>
+</div></footer>
+</body>
+</html>
